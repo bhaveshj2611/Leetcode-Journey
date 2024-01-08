@@ -18,30 +18,32 @@
 
         import java.util.Arrays;
 
-        import java.util.Arrays;
+    
 
 class Solution {
     public int maxFrequency(int[] nums, int k) {
         Arrays.sort(nums);
 
-        int maxFrequency = 1;
         int left = 0;
-        long sum = 0;
-
-        for (int right = 1; right < nums.length; right++) {
-            sum += (long) (nums[right] - nums[right - 1]) * (right - left);
-
-            while (sum > k) {
-                sum -= nums[right] - nums[left];
+        int right = 0;
+        long total = nums[0];
+        long ans = 0;
+        while(right<nums.length){
+            
+            if(total + k >= (long)nums[right] * (right - left + 1)){
+                ans = Math.max(ans,right-left+1);
+                right++;
+                if(right<nums.length){
+                    total = total + nums[right];
+                }
+            }
+            else{
+                total = total - nums[left];
                 left++;
             }
-
-            maxFrequency = Math.max(maxFrequency, right - left + 1);
+            
         }
-
-        return maxFrequency;
+        return (int)ans;
     }
 }
 
-//     }
-// }
