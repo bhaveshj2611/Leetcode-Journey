@@ -1,29 +1,37 @@
-public class Solution {
-    public void permuteRec(int[] nums, int begin, List<List<Integer>> result) {
-        if (begin == nums.length) {
-            List<Integer> temp = new ArrayList<Integer>();
-            for (int num : nums) temp.add(num);
-            result.add(temp);
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        permutations(nums, ans, 0);
+        return ans;
+    }
+
+    void permutations(int[] nums, List<List<Integer>> ans, int index) {
+        if (index == nums.length) {
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < nums.length; i++) {
+                list.add(nums[i]);
+            }
+            ans.add(new ArrayList<>(list));
+
             return;
         }
-        for (int i = begin; i < nums.length; i++) {
-            // Swap
-            int temp = nums[begin];
-            nums[begin] = nums[i];
+
+        for (int i = index; i < nums.length; i++) {
+            int temp = nums[index];
+            nums[index] = nums[i];
             nums[i] = temp;
-            
-            permuteRec(nums, begin + 1, result);
-            
-            // Swap back
-            temp = nums[begin];
-            nums[begin] = nums[i];
+            // System.out.println(Arrays.toString(nums));
+            permutations(nums, ans, index + 1);
+              temp = nums[index];
+            nums[index] = nums[i];
             nums[i] = temp;
         }
     }
-    
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        permuteRec(nums, 0, result);
-        return result;
+
+    void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
