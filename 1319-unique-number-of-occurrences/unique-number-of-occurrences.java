@@ -1,19 +1,12 @@
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<arr.length;i++){
-            if(!map.containsKey(arr[i])){
-                map.put(arr[i],1);
-            }
-            else map.put(arr[i],map.get(arr[i])+1);
-        }
+         Map<Integer,Integer> m = new HashMap<>();
+        for(int i:arr)
+            m.merge(i,1,Integer::sum);
+        Set<Integer> s = new HashSet<>();
+        for(var i:m.entrySet())
+            s.add(i.getValue());
 
-        HashSet<Integer> seenOccurrences = new HashSet<>();
-        for (int value : map.values()) {
-            if (!seenOccurrences.add(value)) {
-                return false; 
-            }
-        }
-        return true;
+        return s.size() == m.size();
     }
 }
