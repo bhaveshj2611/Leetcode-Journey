@@ -11,7 +11,7 @@ class Solution {
         HashSet<Integer> seenOccurrences = new HashSet<>();
         for (int value : map.values()) {
             if (!seenOccurrences.add(value)) {
-                return false; // Duplicate occurrence found
+                return false; 
             }
         }
         return true;
