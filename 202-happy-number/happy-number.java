@@ -1,30 +1,26 @@
 class Solution {
     public boolean isHappy(int n) {
-        if(n==1){
+        int slow = n;
+        int fast = n;
+
+        do {
+            slow = squareSum(slow);
+            fast = squareSum(squareSum(fast));
+            // n = squareSum(n);
+
+        } while (fast != slow);
+
+        if (slow == 1)
             return true;
-        }
-        // HashMap<Integer,Integer> map = new HashMap<>();
-        HashSet<Integer> set = new HashSet<>();
-        while(n!=1){
-            if(set.contains(n)){
-                return false;
-            
-            }
-            else{
-                set.add(n);
-                n = squareSum(n);
-            }
-           
-        }    
-        return true;
+        return false;
     }
 
-    public int squareSum(int number){
+    public int squareSum(int number) {
         int ans = 0;
-        while(number>0){
-            int rem = number%10;
-            ans = rem*rem + ans;
-            number = number/10;
+        while (number > 0) {
+            int rem = number % 10;
+            ans = rem * rem + ans;
+            number = number / 10;
         }
         return ans;
     }
