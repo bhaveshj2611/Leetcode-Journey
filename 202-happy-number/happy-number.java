@@ -3,14 +3,18 @@ class Solution {
         if(n==1){
             return true;
         }
-        HashMap<Integer,Integer> map = new HashMap<>();
+        // HashMap<Integer,Integer> map = new HashMap<>();
+        HashSet<Integer> set = new HashSet<>();
         while(n!=1){
-            if(!map.containsKey(n)){
-                map.put(n,1);
+            if(set.contains(n)){
+                return false;
+            
+            }
+            else{
+                set.add(n);
                 n = squareSum(n);
             }
-            else return false;
-            // n = squareSum(n);
+           
         }    
         return true;
     }
