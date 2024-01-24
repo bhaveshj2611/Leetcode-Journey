@@ -11,11 +11,6 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if(headA.next == null && headB.next == null){
-            if(headA.val == headB.val){
-                return headA;
-            }
-        }
         
         HashSet<ListNode> set = new HashSet<>();
         ListNode t1  = headA;
