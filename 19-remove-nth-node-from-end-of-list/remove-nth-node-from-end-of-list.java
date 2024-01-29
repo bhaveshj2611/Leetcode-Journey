@@ -19,19 +19,12 @@ class Solution {
             length++;
             temp = temp.next;
         }
-        // System.out.println(length);
+       
         if(length==n){
             head = head.next;
             return head;
         }
-        // if(length-1==n){
-        //     temp = head;
-        //     for(int i=0;i<length-2;i++){
-        //         temp = temp.next;
-        //     }
-        //     temp.next = null;
-        //     return head;
-        // }
+      
         temp = head;
         
         for(int i=0;i<length-n-1;i++){
