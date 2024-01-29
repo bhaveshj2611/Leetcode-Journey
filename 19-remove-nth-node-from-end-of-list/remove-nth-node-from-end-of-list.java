@@ -19,7 +19,7 @@ class Solution {
             length++;
             temp = temp.next;
         }
-        System.out.println(length);
+        // System.out.println(length);
         if(length==n){
             head = head.next;
             return head;
