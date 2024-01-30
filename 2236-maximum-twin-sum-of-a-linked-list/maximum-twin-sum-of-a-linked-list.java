@@ -11,10 +11,10 @@
 class Solution {
     public int pairSum(ListNode head) {
         ArrayList<Integer> list = new ArrayList<>();
-        ListNode temp = head;
-        while(temp!=null){
-            list.add(temp.val);
-            temp = temp.next;
+        
+        while(head!=null){
+            list.add(head.val);
+            head=head.next;
         }
         int maxSum = 0;
         for(int i=0;i<list.size()/2;i++){
