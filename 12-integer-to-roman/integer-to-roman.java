@@ -9,6 +9,7 @@ class Solution {
         map.put("M",1000);
         map.put("M",1000);
         map.put("M",1000);
+        map.put("M",1000);
         String s = "";
         int i=0;
         while(num>0){
