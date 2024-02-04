@@ -13,12 +13,13 @@ class Solution {
         if(left == right){
             return head;
         }
-
-        ListNode prev = null;
+        ListNode dummy = new ListNode(0);
+        ListNode prev = dummy;
         ListNode pres = head;
-        // prev.next = pres;
+        dummy.next = head;
+    
 
-        // ListNode temp = head;
+    
         for(int i=0;i<left-1 && pres!=null;i++){
             prev = pres;
             pres = pres.next;
@@ -33,14 +34,10 @@ class Solution {
             pres = nxt;
          }
          
-         if(nodeBeforeRev != null){
-            nodeBeforeRev.next = prev;
-            
-         }
-         else head = prev;
-         
+        
+         nodeBeforeRev.next = prev;
          newEnd.next = pres;
-         return head;
+         return dummy.next;
         
     }
 
