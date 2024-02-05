@@ -1,19 +1,17 @@
 class Solution {
     public boolean isHappy(int n) {
-   
-        int fast = n;
-        int slow = n;
-        do{
-            fast = squareSum(squareSum(fast));
-            slow = squareSum(slow);
+        HashSet<Integer> set = new HashSet<>();
+        
+        while(n != 1){
+            set.add(n);
+            
+            n = squareSum(n);
+            if(set.contains(n)){
+                return false;
+            }
+            
         }
-        while(fast != slow);
-
-        if(slow == 1){
-            return true;
-        }
-        return false;
-
+        return true;
     }
 
     public int squareSum(int n){
