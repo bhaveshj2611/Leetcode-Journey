@@ -9,14 +9,17 @@ class Solution {
             map.put(ch,map.getOrDefault(ch,0)+1);
         }
 
-        List<Character> list = new ArrayList<>(map.keySet());
-        list.sort((obj1,obj2) -> map.get(obj2)-map.get(obj1));
-        for(int i=0;i<list.size();i++){
-            for(int j=0;j<map.get(list.get(i));j++){
-                sb.append(list.get(i));
-            }
-        }
-    
+       PriorityQueue<Character> pq = new PriorityQueue<>(
+           (obj1,obj2) -> (map.get(obj2)- map.get(obj1)));
+       
+
+       pq.addAll(map.keySet());
+       while(!pq.isEmpty()){
+           char ch = pq.poll();
+           for(int i=0;i<map.get(ch);i++){
+               sb.append(ch);
+           }
+       }
        
         return sb.toString();
     }
