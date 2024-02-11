@@ -10,26 +10,28 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        // PriorityQueue<ListNode> pq = new PriorityQueue<>(
+        //     (a,b) -> a.val - b.val
+        // );
         // ListNode ans = new ListNode(0);
         // ListNode dummy = ans;
         
         
-            for(ListNode node : lists){
-            while(node!=null){
-                pq.add(node.val);
-                node = node.next;
-                }
-             }
-             
+        //     for(ListNode node : lists){
+        //     ListNode temp = node;
+        //     while(temp!=null){
+        //         pq.add(temp);
+        //         // temp = temp.next;
+        //         }
 
-             ListNode ans = new ListNode(0);
-             ListNode temp = ans;
-             while(pq.size() > 0){
-                 ListNode node = new ListNode(pq.remove());
-                temp.next = node;
-                temp = temp.next;
-             }
+        
+        //      }
+        //      node = node.next;
+
+        //      while(pq.size() > 0){
+        //         dummy.next = pq.remove();
+        //         dummy = dummy.next;
+        //     }
             
             
         
@@ -40,8 +42,24 @@ class Solution {
           
             
         
-        return ans.next;
+        // return ans.next;
 
-       
+        List<Integer> list = new ArrayList<>();
+        for(ListNode node : lists){
+            while(node!=null){
+                list.add(node.val);
+                node = node.next;
+            }
+        }
+
+        Collections.sort(list);
+        ListNode ans = new ListNode(0);
+        ListNode temp = ans;
+        for(int i=0;i<list.size();i++){
+            ListNode node = new ListNode(list.get(i));
+            temp.next = node;
+            temp = temp.next;
+        }
+        return ans.next;
     }
 }
