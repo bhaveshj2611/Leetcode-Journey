@@ -10,56 +10,24 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        // PriorityQueue<ListNode> pq = new PriorityQueue<>(
-        //     (a,b) -> a.val - b.val
-        // );
-        // ListNode ans = new ListNode(0);
-        // ListNode dummy = ans;
-        
-        
-        //     for(ListNode node : lists){
-        //     ListNode temp = node;
-        //     while(temp!=null){
-        //         pq.add(temp);
-        //         // temp = temp.next;
-        //         }
-
-        
-        //      }
-        //      node = node.next;
-
-        //      while(pq.size() > 0){
-        //         dummy.next = pq.remove();
-        //         dummy = dummy.next;
-        //     }
-            
-            
-        
-        
-
-            
-           
-          
-            
-        
-        // return ans.next;
-
-        List<Integer> list = new ArrayList<>();
-        for(ListNode node : lists){
-            while(node!=null){
-                list.add(node.val);
-                node = node.next;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((a, b) -> a.val - b.val);
+        for (int i = 0; i < lists.length; i++) {
+            if (lists[i]!= null) {
+                pq.add(lists[i]);
             }
         }
-
-        Collections.sort(list);
-        ListNode ans = new ListNode(0);
-        ListNode temp = ans;
-        for(int i=0;i<list.size();i++){
-            ListNode node = new ListNode(list.get(i));
+        ListNode dummyNode = new ListNode(-1);
+        ListNode temp = dummyNode;
+        while (!pq.isEmpty()) {
+            ListNode node = pq.poll();
+            if (node.next != null) {
+                pq.add(node.next);
+            }
             temp.next = node;
             temp = temp.next;
         }
-        return ans.next;
+        return dummyNode.next;
     }
+
+
 }
