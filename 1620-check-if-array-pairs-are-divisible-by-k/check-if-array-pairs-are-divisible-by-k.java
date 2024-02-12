@@ -20,14 +20,14 @@ class Solution {
             }
             if (rem == 0) {
                 if (map.get(rem) % 2 != 0) {
-                    System.out.println("1");
+                    // System.out.println("1");
                     return false;
                 }
 
             }
 
             else if (2 * rem == k && map.get(rem) % 2 != 0) {
-                System.out.println("2");
+                // System.out.println("2");
                 return false;
             }
 
