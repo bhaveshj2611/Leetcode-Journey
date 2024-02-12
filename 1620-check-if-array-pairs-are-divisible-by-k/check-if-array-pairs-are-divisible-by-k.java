@@ -3,14 +3,21 @@ class Solution {
         Map<Integer, Integer> map = new HashMap<>();
         for (int val : arr) {
             
-            int rem = Math.floorMod(val,k);
+            int rem = val%k;
+            if(rem<0){
+                rem = rem + k;
+            }
             map.put(rem, map.getOrDefault(rem, 0) + 1);
         }
 
         // System.out.println(map);
 
         for (int val : arr) {
-            int rem = Math.floorMod(val,k);
+              
+            int rem = val%k;
+            if(rem<0){
+                rem = rem + k;
+            }
             if (rem == 0) {
                 if (map.get(rem) % 2 != 0) {
                     System.out.println("1");
