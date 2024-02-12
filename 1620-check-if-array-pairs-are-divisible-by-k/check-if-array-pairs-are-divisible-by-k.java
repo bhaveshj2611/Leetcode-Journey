@@ -1,6 +1,7 @@
 class Solution {
     public boolean canArrange(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
+        
         for (int val : arr) {
             
             int rem = val%k;
@@ -18,18 +19,15 @@ class Solution {
             if(rem<0){
                 rem = rem + k;
             }
-            if (rem == 0) {
-                if (map.get(rem) % 2 != 0) {
+            if (rem == 0 || 2 * rem == k ) {
+                if (map.get(rem) % 2 == 1) {
                     // System.out.println("1");
                     return false;
                 }
 
             }
 
-            else if (2 * rem == k && map.get(rem) % 2 != 0) {
-                // System.out.println("2");
-                return false;
-            }
+          
 
             else {
                 // System.out.println(rem);
