@@ -3,9 +3,9 @@ class Solution {
         
         
         for(String s : words){
-            StringBuilder sb = new StringBuilder(s);
-            String rev = sb.reverse().toString();
-            if(s.equals(rev)){
+            StringBuilder rev = new StringBuilder(s).reverse();
+            
+            if(s.equals(rev.toString())){
                 return s;
             }
         }
