@@ -44,12 +44,11 @@ class Solution {
                  st.push(new MyPair(temperatures[i],i));
          
             
-        // System.out.println("Stack after this iteration: " + st);
-            // System.out.println("List after " + i + " iteration: " + list);
+        
         }
 
         Collections.reverse(list);
-        System.out.println(list);
+        // System.out.println(list);
 
         int[] ans = new int[n];
 
