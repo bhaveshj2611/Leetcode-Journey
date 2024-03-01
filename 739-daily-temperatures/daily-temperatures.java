@@ -48,13 +48,13 @@ class Solution {
         }
 
         Collections.reverse(list);
-        // System.out.println(list);
+        
 
         int[] ans = new int[n];
 
         for(int k=0;k<ans.length;k++){
             if(list.get(k) != -1){
-                ans[k] = Math.abs(k - list.get(k));
+                ans[k] = list.get(k) - k;
             }
             else{
                 ans[k] = 0;
