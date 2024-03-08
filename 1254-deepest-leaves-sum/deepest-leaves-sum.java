@@ -38,7 +38,7 @@ class Solution {
                     level++;
                 }
                 else{
-                    sum = sum + node.val;
+                    // sum = sum + node.val;
                 }
                 if(node.right!=null){
                     q.add(node.right);
@@ -50,6 +50,6 @@ class Solution {
             }
         }
 
-        return sum/2;
+        return sum;
     }
 }
