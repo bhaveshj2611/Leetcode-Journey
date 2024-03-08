@@ -25,11 +25,11 @@ class Solution {
         int sum = 0;
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        int maxL = 0;
+        
         while(!q.isEmpty()){
             sum=0;
             int size = q.size();
-            maxL = Math.max(level,maxL);
+        
             for(int i=0;i<size;i++){
                 
                  TreeNode node = q.remove();
@@ -38,7 +38,7 @@ class Solution {
                     level++;
                 }
                 else{
-                    // sum = sum + node.val;
+                    sum = sum + node.val;
                 }
                 if(node.right!=null){
                     q.add(node.right);
@@ -50,6 +50,6 @@ class Solution {
             }
         }
 
-        return sum;
+        return sum/2;
     }
 }
