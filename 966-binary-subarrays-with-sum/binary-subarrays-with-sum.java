@@ -1,18 +1,38 @@
 class Solution {
     public int numSubarraysWithSum(int[] nums, int goal) {
-      
-      int ans =0;
-
-      for(int i=0;i<nums.length;i++){
+       int i=0;
+       int j=0;
         int sum = 0;
-        for(int j=i;j<nums.length;j++){
-            sum = sum + nums[j];
+        int ans = 0;
+        int countZeros =0;
+       while(j<nums.length){
+        sum = sum + nums[j];
 
+
+        while(i<j && (sum>goal || nums[i]==0)){
+                    if(nums[i]==0){
+                        countZeros++;
+                    }
+                    else{
+                        countZeros=0;
+                    }
+                    sum = sum - nums[i];
+                    i++;
+
+                }
+
+                
+        
             if(sum == goal){
-                ans++;
+                ans = ans + 1 + countZeros;
+        
             }
-        }
-      }
-      return ans;
+
+            j++;
+            
+                
+            
+       }
+       return ans; 
     }
 }
